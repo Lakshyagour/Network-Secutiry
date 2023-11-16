@@ -1,0 +1,1 @@
+HMAC-SHA512(secret.txt)= acfd8b59d92f8d3c94ea17cffce6655c5a6343c4e9317c4dacfd7142398c0354d80f9ba23f17b73125b93551c39eadd59ed40f3ac1aec55ed8fcceb2b9e1d68a

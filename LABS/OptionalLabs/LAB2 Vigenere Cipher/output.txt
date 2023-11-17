@@ -1,0 +1,837 @@
+
+Table for this Vigenere cipher is:
+
+A   B   C   D   E   F   G   H   I   J   K   L   M   N   O   P   Q   R   S   T   U   V   W   X   Y   Z   
+B   C   D   E   F   G   H   I   J   K   L   M   N   O   P   Q   R   S   T   U   V   W   X   Y   Z   A   
+C   D   E   F   G   H   I   J   K   L   M   N   O   P   Q   R   S   T   U   V   W   X   Y   Z   A   B   
+D   E   F   G   H   I   J   K   L   M   N   O   P   Q   R   S   T   U   V   W   X   Y   Z   A   B   C   
+E   F   G   H   I   J   K   L   M   N   O   P   Q   R   S   T   U   V   W   X   Y   Z   A   B   C   D   
+F   G   H   I   J   K   L   M   N   O   P   Q   R   S   T   U   V   W   X   Y   Z   A   B   C   D   E   
+G   H   I   J   K   L   M   N   O   P   Q   R   S   T   U   V   W   X   Y   Z   A   B   C   D   E   F   
+H   I   J   K   L   M   N   O   P   Q   R   S   T   U   V   W   X   Y   Z   A   B   C   D   E   F   G   
+I   J   K   L   M   N   O   P   Q   R   S   T   U   V   W   X   Y   Z   A   B   C   D   E   F   G   H   
+J   K   L   M   N   O   P   Q   R   S   T   U   V   W   X   Y   Z   A   B   C   D   E   F   G   H   I   
+K   L   M   N   O   P   Q   R   S   T   U   V   W   X   Y   Z   A   B   C   D   E   F   G   H   I   J   
+L   M   N   O   P   Q   R   S   T   U   V   W   X   Y   Z   A   B   C   D   E   F   G   H   I   J   K   
+M   N   O   P   Q   R   S   T   U   V   W   X   Y   Z   A   B   C   D   E   F   G   H   I   J   K   L   
+N   O   P   Q   R   S   T   U   V   W   X   Y   Z   A   B   C   D   E   F   G   H   I   J   K   L   M   
+O   P   Q   R   S   T   U   V   W   X   Y   Z   A   B   C   D   E   F   G   H   I   J   K   L   M   N   
+P   Q   R   S   T   U   V   W   X   Y   Z   A   B   C   D   E   F   G   H   I   J   K   L   M   N   O   
+Q   R   S   T   U   V   W   X   Y   Z   A   B   C   D   E   F   G   H   I   J   K   L   M   N   O   P   
+R   S   T   U   V   W   X   Y   Z   A   B   C   D   E   F   G   H   I   J   K   L   M   N   O   P   Q   
+S   T   U   V   W   X   Y   Z   A   B   C   D   E   F   G   H   I   J   K   L   M   N   O   P   Q   R   
+T   U   V   W   X   Y   Z   A   B   C   D   E   F   G   H   I   J   K   L   M   N   O   P   Q   R   S   
+U   V   W   X   Y   Z   A   B   C   D   E   F   G   H   I   J   K   L   M   N   O   P   Q   R   S   T   
+V   W   X   Y   Z   A   B   C   D   E   F   G   H   I   J   K   L   M   N   O   P   Q   R   S   T   U   
+W   X   Y   Z   A   B   C   D   E   F   G   H   I   J   K   L   M   N   O   P   Q   R   S   T   U   V   
+X   Y   Z   A   B   C   D   E   F   G   H   I   J   K   L   M   N   O   P   Q   R   S   T   U   V   W   
+Y   Z   A   B   C   D   E   F   G   H   I   J   K   L   M   N   O   P   Q   R   S   T   U   V   W   X   
+Z   A   B   C   D   E   F   G   H   I   J   K   L   M   N   O   P   Q   R   S   T   U   V   W   X   Y   
+
+
+
+
+Ciphertext to be decrypted is given to us is as follows:
+
+CVJTNAFENMCDMKBXFSTKLHGSOJWHOFUISFYFBEXEINFIMAYSSDYYIJNPWTOKFRHWVWTZFXHLUYUMSGVDURBWBIVXFAFMYFYXPIGBHWIFHHOJBEXAUNFIYLJWDKNHGAOVBHHGVINAULZFOFUQCVFBYNFTYGMMSVGXCFZFOKQATUIFUFERQTEWZFOKMWOJYLNZBKSHOEBPNAYTFKNXLBVUAXCXUYYKYTFRHRCFUYCLUKTVGUFQBESWYSSWLBYFEFZVUWTRLLNGIZGBMSZKBTNTSLNNMDPMYMIUBVMTLOBJHHFWTJNAUFIZMBZLIVHMBSUWLBYFEUYFUFENBRVJVKOLLGTVUZUAOJNVUWTRLMBATZMFSSOJQXLFPKNAULJCIOYVDRYLUJMVMLVMUKBTNAMFPXXJPDYFIJFYUWSGVIUMBWSTUXMSSNYKYDJMCGASOUXBYSMCMEUNFJNAUFUYUMWSFJUKQWSVXXUVUFFBPWBCFYLWFDYGUKDRYLUJMFPXXEFZQXYHGFLACEBJBXQSTWIKNMORNXCJFAIBWWBKCMUKIVQTMNBCCTHLJYIGIMSYCFVMURMAYOBJUFVAUZINMATCYPBANKBXLWJJNXUJTWIKBATCIOYBPPZHLZJJZHLLVEYAIFPLLYIJIZMOUDPLLTHVEVUMBXPIBBMSNSCMCGONBHCKIVLXMGCRMXNZBKQHODESYTVGOUGTHAGRHRMHFREYIJIZGAUNFZIYZWOUYWQZPZMAYJFJIKOVFKBTNOPLFWHGUSYTLGNRHBZSOPMIYSLWIKBANYUOYAPWZXHVFUQAIATYYKYKPMCEYLIRNPCDMEIMFGWVBBMUPLHMLQJWUGSKQVUDZGSYCFBSWVCHZXFEXXXAQROLYXPIUKYHMPNAYFOFHXBSWVCHZXFEXXXAIRPXXGOVHHGGSVNHWSFJUKNZBESHOKIRFEXGUFVKOLVJNAYIVVMMCGOFZACKEVUMBATVHKIDMVXBHLIVWTJAUFFACKHCIKSFPKYQNWOLUMYVXYYKYAOYYPUKXFLMBQOFLACKPWZXHUFJYGZGSTYWZGSNBBWZIVMNZXFIYWXWBKBAYJFTIFYKIZMUIVZDINLFFUVRGSSBUGNGOPQAILIFOZBZFYUWHGIRHWCFIZMWYSUYMAUDMIYVYAWVNAYTFEYYCLPWBBMVZZHZUHMRWXCFUYYVIENFHPYSMKBTMOIZWAIXZFOLBSMCHHNOJKBMBATZXXJSSKNAULBJCLFWXDSUYKUCIOYJGFLMBWHFIWIXSFGXCZBMYMBWTRGXXSHXYKZGSDSLYDGNBXHAUJBTFDQCYTMWNPWHOFUISMIFFVXFSVFRNA
+
+
+Repeated sequences found:
+
+
+Sequences 	 Size:
+ACK			3
+ATC			3
+ATZ			3
+AUF			3
+AUL			3
+AUN			3
+AYJ			3
+AYT			3
+BAN			3
+BAT			3
+BBM			3
+BES			3
+BEX			3
+BMS			3
+BSW			3
+BTN			3
+BYF			3
+CDM			3
+CFU			3
+CGO			3
+CHZ			3
+CIO			3
+DRY			3
+EFZ			3
+EVU			3
+EXX			3
+FEN			3
+FEX			3
+FIY			3
+FIZ			3
+FJU			3
+FLA			3
+FLM			3
+FOF			3
+FOK			3
+FPK			3
+FPX			3
+FRH			3
+FUF			3
+FUI			3
+FUQ			3
+FUY			3
+FYU			3
+GFL			3
+GUF			3
+GVI			3
+GXC			3
+HHG			3
+HOF			3
+HZX			3
+IJI			3
+IKB			3
+IOY			3
+IZG			3
+IZM			3
+JIZ			3
+JNA			3
+JUK			3
+KBA			3
+KBT			3
+KBX			3
+KIV			3
+KNA			3
+KOL			3
+LAC			3
+LBY			3
+LFW			3
+LIV			3
+LMB			3
+LUJ			3
+MAY			3
+MBA			3
+MBW			3
+MCG			3
+MFP			3
+MIY			3
+MKB			3
+MUK			3
+MYM			3
+NAU			3
+NAY			3
+NFI			3
+NPW			3
+NZB			3
+OBJ			3
+OFU			3
+PLL			3
+PNA			3
+PWB			3
+PWZ			3
+PXX			3
+QAI			3
+RHR			3
+RHW			3
+RYL			3
+SFJ			3
+SGV			3
+SHO			3
+SMC			3
+SOJ			3
+SUY			3
+SWV			3
+SYC			3
+SYT			3
+TNA			3
+TRL			3
+TVG			3
+TWI			3
+UFE			3
+UFF			3
+UFV			3
+UIS			3
+UJM			3
+UMB			3
+UNF			3
+UWT			3
+UYU			3
+UYY			3
+VCH			3
+VKO			3
+VMU			3
+VUM			3
+VUW			3
+VWT			3
+VXF			3
+WBK			3
+WHG			3
+WHO			3
+WIK			3
+WLB			3
+WSF			3
+WTJ			3
+WTR			3
+WVC			3
+WYS			3
+WZX			3
+XCF			3
+XFE			3
+XFS			3
+XPI			3
+XXA			3
+XXJ			3
+XXX			3
+YCF			3
+YCL			3
+YFE			3
+YIJ			3
+YJF			3
+YKY			3
+YLU			3
+YSM			3
+YSS			3
+YTF			3
+YUM			3
+YUW			3
+YXP			3
+YYK			3
+ZBK			3
+ZFO			3
+ZGS			3
+ZHL			3
+ZXF			3
+ZXH			3
+AUNF			4
+AYJF			4
+AYTF			4
+BATZ			4
+BSWV			4
+BYFE			4
+CFUY			4
+CHZX			4
+CIOY			4
+DRYL			4
+EVUM			4
+EXXX			4
+FEXX			4
+FIZM			4
+FJUK			4
+FLAC			4
+FLMB			4
+FPXX			4
+FUFE			4
+FUIS			4
+FYUW			4
+HOFU			4
+HZXF			4
+IJIZ			4
+IKBA			4
+JNAU			4
+KBTN			4
+KNAU			4
+LBYF			4
+LUJM			4
+MBAT			4
+MCGO			4
+MFPX			4
+NAUF			4
+NAUL			4
+NAYT			4
+NZBK			4
+OFUI			4
+PNAY			4
+PWZX			4
+RYLU			4
+SFJU			4
+SWVC			4
+SYCF			4
+TWIK			4
+UWTR			4
+UYUM			4
+VCHZ			4
+VKOL			4
+VUMB			4
+VUWT			4
+WHOF			4
+WIKB			4
+WLBY			4
+WSFJ			4
+WTRL			4
+WVCH			4
+WZXH			4
+XFEX			4
+XXXA			4
+YIJI			4
+YLUJ			4
+YXPI			4
+YYKY			4
+ZFOK			4
+ZXFE			4
+BSWVC			5
+CHZXF			5
+DRYLU			5
+EVUMB			5
+EXXXA			5
+FEXXX			5
+HOFUI			5
+HZXFE			5
+JNAUF			5
+KNAUL			5
+LBYFE			5
+MBATZ			5
+MFPXX			5
+NAYTF			5
+OFUIS			5
+PWZXH			5
+RYLUJ			5
+SFJUK			5
+SWVCH			5
+UWTRL			5
+VCHZX			5
+VUWTR			5
+WHOFU			5
+WIKBA			5
+WLBYF			5
+WSFJU			5
+WVCHZ			5
+XFEXX			5
+YIJIZ			5
+YLUJM			5
+ZXFEX			5
+BSWVCH			6
+CHZXFE			6
+DRYLUJ			6
+FEXXXA			6
+HOFUIS			6
+HZXFEX			6
+RYLUJM			6
+SWVCHZ			6
+VCHZXF			6
+VUWTRL			6
+WHOFUI			6
+WLBYFE			6
+WSFJUK			6
+WVCHZX			6
+XFEXXX			6
+ZXFEXX			6
+BSWVCHZ			7
+CHZXFEX			7
+DRYLUJM			7
+HZXFEXX			7
+SWVCHZX			7
+VCHZXFE			7
+WHOFUIS			7
+WVCHZXF			7
+XFEXXXA			7
+ZXFEXXX			7
+BSWVCHZX			8
+CHZXFEXX			8
+HZXFEXXX			8
+SWVCHZXF			8
+VCHZXFEX			8
+WVCHZXFE			8
+ZXFEXXXA			8
+BSWVCHZXF			9
+CHZXFEXXX			9
+HZXFEXXXA			9
+SWVCHZXFE			9
+VCHZXFEXX			9
+WVCHZXFEX			9
+BSWVCHZXFE			10
+CHZXFEXXXA			10
+SWVCHZXFEX			10
+VCHZXFEXXX			10
+WVCHZXFEXX			10
+BSWVCHZXFEX			11
+SWVCHZXFEXX			11
+VCHZXFEXXXA			11
+WVCHZXFEXXX			11
+BSWVCHZXFEXX			12
+SWVCHZXFEXXX			12
+WVCHZXFEXXXA			12
+BSWVCHZXFEXXX			13
+SWVCHZXFEXXXA			13
+BSWVCHZXFEXXXA			14
+ACK 969 999 1041 		The distance between consecutive gaps are:30 42 
+ATC 593 617 		The distance between consecutive gaps are:24 
+ATZ 359 1229 		The distance between consecutive gaps are:870 
+AUF 303 459 995 		The distance between consecutive gaps are:156 536 
+AUL 135 375 1239 		The distance between consecutive gaps are:240 864 
+AUN 111 729 		The distance between consecutive gaps are:618 
+AUNF 111 729 		The distance between consecutive gaps are:618 
+AYJ 747 1083 		The distance between consecutive gaps are:336 
+AYJF 747 1083 		The distance between consecutive gaps are:336 
+AYT 201 1161 		The distance between consecutive gaps are:960 
+AYTF 201 1161 		The distance between consecutive gaps are:960 
+BAN 598 790 		The distance between consecutive gaps are:192 
+BAT 358 616 976 1228 		The distance between consecutive gaps are:258 360 252 
+BATZ 358 1228 		The distance between consecutive gaps are:870 
+BBM 668 836 1172 		The distance between consecutive gaps are:168 336 
+BES 240 936 		The distance between consecutive gaps are:696 
+BEX 36 108 		The distance between consecutive gaps are:72 
+BMS 267 669 		The distance between consecutive gaps are:402 
+BSW 862 898 		The distance between consecutive gaps are:36 
+BSWV 862 898 		The distance between consecutive gaps are:36 
+BSWVC 862 898 		The distance between consecutive gaps are:36 
+BSWVCH 862 898 		The distance between consecutive gaps are:36 
+BSWVCHZ 862 898 		The distance between consecutive gaps are:36 
+BSWVCHZX 862 898 		The distance between consecutive gaps are:36 
+BSWVCHZXF 862 898 		The distance between consecutive gaps are:36 
+BSWVCHZXFE 862 898 		The distance between consecutive gaps are:36 
+BSWVCHZXFEX 862 898 		The distance between consecutive gaps are:36 
+BSWVCHZXFEXX 862 898 		The distance between consecutive gaps are:36 
+BSWVCHZXFEXXX 862 898 		The distance between consecutive gaps are:36 
+BSWVCHZXFEXXXA 862 898 		The distance between consecutive gaps are:36 
+BTN 272 398 758 		The distance between consecutive gaps are:126 360 
+BYF 249 321 		The distance between consecutive gaps are:72 
+BYFE 249 321 		The distance between consecutive gaps are:72 
+CDM 10 826 		The distance between consecutive gaps are:816 
+CFU 226 1186 		The distance between consecutive gaps are:960 
+CFUY 226 1186 		The distance between consecutive gaps are:960 
+CGO 676 964 		The distance between consecutive gaps are:288 
+CHZ 866 902 		The distance between consecutive gaps are:36 
+CHZX 866 902 		The distance between consecutive gaps are:36 
+CHZXF 866 902 		The distance between consecutive gaps are:36 
+CHZXFE 866 902 		The distance between consecutive gaps are:36 
+CHZXFEX 866 902 		The distance between consecutive gaps are:36 
+CHZXFEXX 866 902 		The distance between consecutive gaps are:36 
+CHZXFEXXX 866 902 		The distance between consecutive gaps are:36 
+CHZXFEXXXA 866 902 		The distance between consecutive gaps are:36 
+CIO 379 619 1255 		The distance between consecutive gaps are:240 636 
+CIOY 379 619 1255 		The distance between consecutive gaps are:240 636 
+DRY 384 498 		The distance between consecutive gaps are:114 
+DRYL 384 498 		The distance between consecutive gaps are:114 
+DRYLU 384 498 		The distance between consecutive gaps are:114 
+DRYLUJ 384 498 		The distance between consecutive gaps are:114 
+DRYLUJM 384 498 		The distance between consecutive gaps are:114 
+EFZ 252 509 		The distance between consecutive gaps are:257 
+EVU 660 972 		The distance between consecutive gaps are:312 
+EVUM 660 972 		The distance between consecutive gaps are:312 
+EVUMB 660 972 		The distance between consecutive gaps are:312 
+EXX 871 907 		The distance between consecutive gaps are:36 
+EXXX 871 907 		The distance between consecutive gaps are:36 
+EXXXA 871 907 		The distance between consecutive gaps are:36 
+FEN 6 329 		The distance between consecutive gaps are:323 
+FEX 870 906 944 		The distance between consecutive gaps are:36 38 
+FEXX 870 906 		The distance between consecutive gaps are:36 
+FEXXX 870 906 		The distance between consecutive gaps are:36 
+FEXXXA 870 906 		The distance between consecutive gaps are:36 
+FIY 114 1074 		The distance between consecutive gaps are:960 
+FIZ 305 1139 		The distance between consecutive gaps are:834 
+FIZM 305 1139 		The distance between consecutive gaps are:834 
+FJU 468 930 		The distance between consecutive gaps are:462 
+FJUK 468 930 		The distance between consecutive gaps are:462 
+FLA 517 1039 		The distance between consecutive gaps are:522 
+FLAC 517 1039 		The distance between consecutive gaps are:522 
+FLM 1033 1261 		The distance between consecutive gaps are:228 
+FLMB 1033 1261 		The distance between consecutive gaps are:228 
+FOF 139 893 		The distance between consecutive gaps are:754 
+FOK 163 181 		The distance between consecutive gaps are:18 
+FPK 371 1007 		The distance between consecutive gaps are:636 
+FPX 403 505 		The distance between consecutive gaps are:102 
+FPXX 403 505 		The distance between consecutive gaps are:102 
+FRH 60 222 		The distance between consecutive gaps are:162 
+FUF 171 327 		The distance between consecutive gaps are:156 
+FUFE 171 327 		The distance between consecutive gaps are:156 
+FUI 29 1325 		The distance between consecutive gaps are:1296 
+FUIS 29 1325 		The distance between consecutive gaps are:1296 
+FUQ 141 804 		The distance between consecutive gaps are:663 
+FUY 227 461 1187 		The distance between consecutive gaps are:234 726 
+FYU 414 1128 		The distance between consecutive gaps are:714 
+FYUW 414 1128 		The distance between consecutive gaps are:714 
+GFL 516 1260 		The distance between consecutive gaps are:744 
+GUF 236 947 		The distance between consecutive gaps are:711 
+GVI 131 419 		The distance between consecutive gaps are:288 
+GXC 158 1274 		The distance between consecutive gaps are:1116 
+HHG 129 920 		The distance between consecutive gaps are:791 
+HOF 27 1323 		The distance between consecutive gaps are:1296 
+HOFU 27 1323 		The distance between consecutive gaps are:1296 
+HOFUI 27 1323 		The distance between consecutive gaps are:1296 
+HOFUIS 27 1323 		The distance between consecutive gaps are:1296 
+HZX 867 903 		The distance between consecutive gaps are:36 
+HZXF 867 903 		The distance between consecutive gaps are:36 
+HZXFE 867 903 		The distance between consecutive gaps are:36 
+HZXFEX 867 903 		The distance between consecutive gaps are:36 
+HZXFEXX 867 903 		The distance between consecutive gaps are:36 
+HZXFEXXX 867 903 		The distance between consecutive gaps are:36 
+HZXFEXXXA 867 903 		The distance between consecutive gaps are:36 
+IJI 646 724 		The distance between consecutive gaps are:78 
+IJIZ 646 724 		The distance between consecutive gaps are:78 
+IKB 614 788 		The distance between consecutive gaps are:174 
+IKBA 614 788 		The distance between consecutive gaps are:174 
+IOY 380 620 1256 		The distance between consecutive gaps are:240 636 
+IZG 264 726 		The distance between consecutive gaps are:462 
+IZM 306 648 1092 1140 		The distance between consecutive gaps are:342 444 48 
+JIZ 647 725 		The distance between consecutive gaps are:78 
+JNA 301 457 955 		The distance between consecutive gaps are:156 498 
+JNAU 301 457 		The distance between consecutive gaps are:156 
+JNAUF 301 457 		The distance between consecutive gaps are:156 
+JUK 469 931 		The distance between consecutive gaps are:462 
+KBA 615 789 1081 		The distance between consecutive gaps are:174 292 
+KBT 271 397 757 1201 		The distance between consecutive gaps are:126 360 444 
+KBTN 271 397 757 		The distance between consecutive gaps are:126 360 
+KBX 13 601 		The distance between consecutive gaps are:588 
+KIV 551 683 		The distance between consecutive gaps are:132 
+KNA 373 1237 		The distance between consecutive gaps are:864 
+KNAU 373 1237 		The distance between consecutive gaps are:864 
+KNAUL 373 1237 		The distance between consecutive gaps are:864 
+KOL 337 951 		The distance between consecutive gaps are:614 
+LAC 518 1040 		The distance between consecutive gaps are:522 
+LBY 248 320 		The distance between consecutive gaps are:72 
+LBYF 248 320 		The distance between consecutive gaps are:72 
+LBYFE 248 320 		The distance between consecutive gaps are:72 
+LFW 763 1245 		The distance between consecutive gaps are:482 
+LIV 311 989 		The distance between consecutive gaps are:678 
+LMB 356 1034 1262 		The distance between consecutive gaps are:678 228 
+LUJ 387 501 		The distance between consecutive gaps are:114 
+LUJM 387 501 		The distance between consecutive gaps are:114 
+MAY 44 578 746 		The distance between consecutive gaps are:534 168 
+MBA 357 975 1227 		The distance between consecutive gaps are:618 252 
+MBAT 357 975 1227 		The distance between consecutive gaps are:618 252 
+MBATZ 357 1227 		The distance between consecutive gaps are:870 
+MBW 423 1263 1281 		The distance between consecutive gaps are:840 18 
+MCG 439 675 963 		The distance between consecutive gaps are:236 288 
+MCGO 675 963 		The distance between consecutive gaps are:288 
+MFP 402 504 		The distance between consecutive gaps are:102 
+MFPX 402 504 		The distance between consecutive gaps are:102 
+MFPXX 402 504 		The distance between consecutive gaps are:102 
+MIY 782 1152 		The distance between consecutive gaps are:370 
+MKB 12 1200 		The distance between consecutive gaps are:1188 
+MUK 395 549 		The distance between consecutive gaps are:154 
+MYM 283 1279 		The distance between consecutive gaps are:996 
+NAU 134 302 374 458 1238 		The distance between consecutive gaps are:168 72 84 780 
+NAUF 302 458 		The distance between consecutive gaps are:156 
+NAUL 134 374 1238 		The distance between consecutive gaps are:240 864 
+NAY 200 890 956 1160 		The distance between consecutive gaps are:690 66 204 
+NAYT 200 1160 		The distance between consecutive gaps are:960 
+NAYTF 200 1160 		The distance between consecutive gaps are:960 
+NFI 41 113 		The distance between consecutive gaps are:72 
+NPW 54 1320 		The distance between consecutive gaps are:1266 
+NZB 190 694 934 		The distance between consecutive gaps are:504 240 
+NZBK 190 694 		The distance between consecutive gaps are:504 
+OBJ 293 581 		The distance between consecutive gaps are:288 
+OFU 28 140 1324 		The distance between consecutive gaps are:112 1184 
+OFUI 28 1324 		The distance between consecutive gaps are:1296 
+OFUIS 28 1324 		The distance between consecutive gaps are:1296 
+PLL 642 654 		The distance between consecutive gaps are:12 
+PNA 199 889 		The distance between consecutive gaps are:690 
+PNAY 199 889 		The distance between consecutive gaps are:690 
+PWB 484 1170 		The distance between consecutive gaps are:686 
+PWZ 798 1044 		The distance between consecutive gaps are:246 
+PWZX 798 1044 		The distance between consecutive gaps are:246 
+PWZXH 798 1044 		The distance between consecutive gaps are:246 
+PXX 404 506 914 		The distance between consecutive gaps are:102 408 
+QAI 806 1118 		The distance between consecutive gaps are:312 
+RHR 223 715 		The distance between consecutive gaps are:492 
+RHW 61 1135 		The distance between consecutive gaps are:1074 
+RYL 385 499 		The distance between consecutive gaps are:114 
+RYLU 385 499 		The distance between consecutive gaps are:114 
+RYLUJ 385 499 		The distance between consecutive gaps are:114 
+RYLUJM 385 499 		The distance between consecutive gaps are:114 
+SFJ 467 929 		The distance between consecutive gaps are:462 
+SFJU 467 929 		The distance between consecutive gaps are:462 
+SFJUK 467 929 		The distance between consecutive gaps are:462 
+SGV 76 418 		The distance between consecutive gaps are:342 
+SHO 194 938 		The distance between consecutive gaps are:744 
+SMC 449 1217 		The distance between consecutive gaps are:768 
+SOJ 23 365 		The distance between consecutive gaps are:342 
+SUY 1145 1250 		The distance between consecutive gaps are:105 
+SWV 863 899 		The distance between consecutive gaps are:36 
+SWVC 863 899 		The distance between consecutive gaps are:36 
+SWVCH 863 899 		The distance between consecutive gaps are:36 
+SWVCHZ 863 899 		The distance between consecutive gaps are:36 
+SWVCHZX 863 899 		The distance between consecutive gaps are:36 
+SWVCHZXF 863 899 		The distance between consecutive gaps are:36 
+SWVCHZXFE 863 899 		The distance between consecutive gaps are:36 
+SWVCHZXFEX 863 899 		The distance between consecutive gaps are:36 
+SWVCHZXFEXX 863 899 		The distance between consecutive gaps are:36 
+SWVCHZXFEXXX 863 899 		The distance between consecutive gaps are:36 
+SWVCHZXFEXXXA 863 899 		The distance between consecutive gaps are:36 
+SYC 570 858 		The distance between consecutive gaps are:288 
+SYCF 570 858 		The distance between consecutive gaps are:288 
+SYT 703 769 		The distance between consecutive gaps are:66 
+TNA 3 399 		The distance between consecutive gaps are:396 
+TRL 258 354 		The distance between consecutive gaps are:96 
+TVG 234 705 		The distance between consecutive gaps are:471 
+TWI 528 612 		The distance between consecutive gaps are:84 
+TWIK 528 612 		The distance between consecutive gaps are:84 
+UFE 172 328 		The distance between consecutive gaps are:156 
+UFF 480 996 		The distance between consecutive gaps are:516 
+UFV 584 948 		The distance between consecutive gaps are:364 
+UIS 30 1326 		The distance between consecutive gaps are:1296 
+UJM 388 502 		The distance between consecutive gaps are:114 
+UMB 422 662 974 		The distance between consecutive gaps are:240 312 
+UNF 112 454 730 		The distance between consecutive gaps are:342 276 
+UWT 256 352 		The distance between consecutive gaps are:96 
+UWTR 256 352 		The distance between consecutive gaps are:96 
+UWTRL 256 352 		The distance between consecutive gaps are:96 
+UYU 72 462 		The distance between consecutive gaps are:390 
+UYUM 72 462 		The distance between consecutive gaps are:390 
+UYY 216 1188 		The distance between consecutive gaps are:972 
+VCH 865 901 		The distance between consecutive gaps are:36 
+VCHZ 865 901 		The distance between consecutive gaps are:36 
+VCHZX 865 901 		The distance between consecutive gaps are:36 
+VCHZXF 865 901 		The distance between consecutive gaps are:36 
+VCHZXFE 865 901 		The distance between consecutive gaps are:36 
+VCHZXFEX 865 901 		The distance between consecutive gaps are:36 
+VCHZXFEXX 865 901 		The distance between consecutive gaps are:36 
+VCHZXFEXXX 865 901 		The distance between consecutive gaps are:36 
+VCHZXFEXXXA 865 901 		The distance between consecutive gaps are:36 
+VKO 336 950 		The distance between consecutive gaps are:614 
+VKOL 336 950 		The distance between consecutive gaps are:614 
+VMU 394 574 		The distance between consecutive gaps are:180 
+VUM 661 973 		The distance between consecutive gaps are:312 
+VUMB 661 973 		The distance between consecutive gaps are:312 
+VUW 255 351 		The distance between consecutive gaps are:96 
+VUWT 255 351 		The distance between consecutive gaps are:96 
+VUWTR 255 351 		The distance between consecutive gaps are:96 
+VUWTRL 255 351 		The distance between consecutive gaps are:96 
+VWT 64 991 		The distance between consecutive gaps are:927 
+VXF 86 1333 		The distance between consecutive gaps are:1247 
+WBK 545 1079 		The distance between consecutive gaps are:534 
+WHG 765 1131 		The distance between consecutive gaps are:366 
+WHO 26 1322 		The distance between consecutive gaps are:1296 
+WHOF 26 1322 		The distance between consecutive gaps are:1296 
+WHOFU 26 1322 		The distance between consecutive gaps are:1296 
+WHOFUI 26 1322 		The distance between consecutive gaps are:1296 
+WHOFUIS 26 1322 		The distance between consecutive gaps are:1296 
+WIK 529 613 787 		The distance between consecutive gaps are:84 174 
+WIKB 613 787 		The distance between consecutive gaps are:174 
+WIKBA 613 787 		The distance between consecutive gaps are:174 
+WLB 247 319 		The distance between consecutive gaps are:72 
+WLBY 247 319 		The distance between consecutive gaps are:72 
+WLBYF 247 319 		The distance between consecutive gaps are:72 
+WLBYFE 247 319 		The distance between consecutive gaps are:72 
+WSF 466 928 		The distance between consecutive gaps are:462 
+WSFJ 466 928 		The distance between consecutive gaps are:462 
+WSFJU 466 928 		The distance between consecutive gaps are:462 
+WSFJUK 466 928 		The distance between consecutive gaps are:462 
+WTJ 299 992 		The distance between consecutive gaps are:693 
+WTR 257 353 1283 		The distance between consecutive gaps are:96 930 
+WTRL 257 353 		The distance between consecutive gaps are:96 
+WVC 864 900 		The distance between consecutive gaps are:36 
+WVCH 864 900 		The distance between consecutive gaps are:36 
+WVCHZ 864 900 		The distance between consecutive gaps are:36 
+WVCHZX 864 900 		The distance between consecutive gaps are:36 
+WVCHZXF 864 900 		The distance between consecutive gaps are:36 
+WVCHZXFE 864 900 		The distance between consecutive gaps are:36 
+WVCHZXFEX 864 900 		The distance between consecutive gaps are:36 
+WVCHZXFEXX 864 900 		The distance between consecutive gaps are:36 
+WVCHZXFEXXX 864 900 		The distance between consecutive gaps are:36 
+WVCHZXFEXXXA 864 900 		The distance between consecutive gaps are:36 
+WYS 243 1143 		The distance between consecutive gaps are:900 
+WZX 799 1045 		The distance between consecutive gaps are:246 
+WZXH 799 1045 		The distance between consecutive gaps are:246 
+XCF 159 1185 		The distance between consecutive gaps are:1026 
+XFE 869 905 		The distance between consecutive gaps are:36 
+XFEX 869 905 		The distance between consecutive gaps are:36 
+XFEXX 869 905 		The distance between consecutive gaps are:36 
+XFEXXX 869 905 		The distance between consecutive gaps are:36 
+XFEXXXA 869 905 		The distance between consecutive gaps are:36 
+XFS 15 1334 		The distance between consecutive gaps are:1319 
+XPI 95 665 881 		The distance between consecutive gaps are:570 216 
+XXA 873 909 		The distance between consecutive gaps are:36 
+XXJ 405 1232 		The distance between consecutive gaps are:827 
+XXX 872 908 		The distance between consecutive gaps are:36 
+XXXA 872 908 		The distance between consecutive gaps are:36 
+YCF 571 859 		The distance between consecutive gaps are:288 
+YCL 229 1167 		The distance between consecutive gaps are:938 
+YFE 250 322 		The distance between consecutive gaps are:72 
+YIJ 51 645 723 		The distance between consecutive gaps are:594 78 
+YIJI 645 723 		The distance between consecutive gaps are:78 
+YIJIZ 645 723 		The distance between consecutive gaps are:78 
+YJF 748 1084 		The distance between consecutive gaps are:336 
+YKY 218 434 812 1022 		The distance between consecutive gaps are:216 378 210 
+YLU 386 500 		The distance between consecutive gaps are:114 
+YLUJ 386 500 		The distance between consecutive gaps are:114 
+YLUJM 386 500 		The distance between consecutive gaps are:114 
+YSM 448 1198 		The distance between consecutive gaps are:750 
+YSS 46 244 		The distance between consecutive gaps are:198 
+YTF 202 220 1162 		The distance between consecutive gaps are:18 942 
+YUM 73 463 		The distance between consecutive gaps are:390 
+YUW 415 1129 		The distance between consecutive gaps are:714 
+YXP 94 880 		The distance between consecutive gaps are:786 
+YXPI 94 880 		The distance between consecutive gaps are:786 
+YYK 217 811 1021 		The distance between consecutive gaps are:594 210 
+YYKY 217 811 1021 		The distance between consecutive gaps are:594 210 
+ZBK 191 695 		The distance between consecutive gaps are:504 
+ZFO 138 162 180 1212 		The distance between consecutive gaps are:24 18 1032 
+ZFOK 162 180 		The distance between consecutive gaps are:18 
+ZGS 856 1054 1060 1294 		The distance between consecutive gaps are:198 6 234 
+ZHL 626 632 		The distance between consecutive gaps are:6 
+ZXF 868 904 1072 		The distance between consecutive gaps are:36 168 
+ZXFE 868 904 		The distance between consecutive gaps are:36 
+ZXFEX 868 904 		The distance between consecutive gaps are:36 
+ZXFEXX 868 904 		The distance between consecutive gaps are:36 
+ZXFEXXX 868 904 		The distance between consecutive gaps are:36 
+ZXFEXXXA 868 904 		The distance between consecutive gaps are:36 
+ZXH 800 1046 		The distance between consecutive gaps are:246 
+
+
+6	2
+12	1
+18	5
+24	2
+30	1
+36	78
+38	1
+42	1
+48	1
+66	2
+72	13
+78	6
+84	4
+96	10
+102	6
+105	1
+112	1
+114	15
+126	3
+132	1
+154	1
+156	8
+162	1
+168	4
+174	6
+180	1
+192	1
+198	2
+204	1
+210	3
+216	2
+228	3
+234	2
+236	1
+240	7
+246	6
+252	3
+257	1
+258	1
+276	1
+288	8
+292	1
+312	7
+323	1
+336	4
+342	4
+360	4
+364	1
+366	1
+370	1
+378	1
+390	3
+396	1
+402	1
+408	1
+444	2
+462	11
+471	1
+482	1
+492	1
+498	1
+504	3
+516	1
+522	3
+534	2
+536	1
+570	1
+588	1
+594	3
+614	3
+618	4
+636	4
+663	1
+678	2
+686	1
+690	3
+693	1
+696	1
+711	1
+714	3
+726	1
+744	2
+750	1
+754	1
+768	1
+780	1
+786	2
+791	1
+816	1
+827	1
+834	2
+840	1
+864	5
+870	3
+900	1
+927	1
+930	1
+938	1
+942	1
+960	7
+972	1
+996	1
+1026	1
+1032	1
+1074	1
+1116	1
+1184	1
+1188	1
+1247	1
+1266	1
+1296	14
+1319	1
+
+
+No. of common divisor of gaps
+
+
+Size of GAP 		 count of such gaps
+2  100
+3  92
+4  51
+5  17
+6  86
+7  21
+8  26
+9  28
+10  16
+11  10
+12  45
+13  9
+14  18
+15  16
+16  13
+17  7
+18  25
+19  7
+20  7
+
+
+Most common divisor among the found gaps size between repeating sequences:
+2 
+
+
+
+for n=6 Columnwise nth character of the cipher message
+1	CFMTOUBFSNFTUVBFPIBFDOVZCFSZTEZOBBFVUFUTBSETIZSPBBTIIUEEVTOTTOPJDMUMPFVSSJOMFUFSUBFDMFGBTOFBIBJSUBUTNJTTPJVPIPEPNOICBEOGFIFOPFFPUNOLNPFTPIMWPJQSWFQPMOWFIOSFBIUVVOETMIUHPOXOXOPFSSIFBFIZFSOIFIIUMWFPZMUNMIZMJTSBXUGHSBTHSGUQNUFF
+
+2	VEKKJIEIDPRZYDIMIFEIKVIFVTVFURFJKPKUYRYVEWFRZKLMVJJZVWUNKVJRZJKCRVKFDYITNMUCJYJVFCDRFZFJWRAKVCYYRJZCKJWCPJELZLVISNVRKSURRZZUZJKLSRPWYWUYMREVLWVYVERIPFVERVVJERFJVFVVVVFCKLYYFFWJTNVIKTZDUBPFYRZYIVEWZRYFKZFCKZKJDCFFFMRXDNJCPIVR
+
+3	JNBLWSXMYWHFUUVYGHXYNBNOFYGOIQOYSNNAYHCGSLZLGBNYMHNMHLYBOUNLMQNIYMBPYUUUYCXMNUUXFFYYPQLBINICQCICMUIYBNIIZZYLMLUBCBLMQYGHEGIYMIBFYHMIUZQYCNIBHUUCCXOUNHCXPHNUSFVNMZUHXWFIYUYYLLZYYBMYBIMIVUQOUHMMYNYBHWYHBWOHBXNCSILIGYGYSBBYWSXN
+
+4	TMXHHFEAYTWXMRXFBHALHHAFBGXKFTKLHAXXKRLUWBVLBTNMTHABMBFRLZVMFXAOLLTXFWMXKGBEAMKXBYGLXXAXKXBMTTGFAFNPXXKOHHAYOTMBMHXXHTTRYAYWAKTWTBIKOXAKEPMBMGDFHXLKAXHXXHHKHEKAMAMKBTAKQMKPMAXGWBNWAFUNRGAZWWWAVAYBZXVPTALHMXALUOMWXMXKLXTTHMFA
+
+5	NCFGOYIYIOVHSBFYHOUJGHUUYMCQUEMNOYLCYCUFYYUNMNMILFUZBYUVLUUBSLUYUVNXISBMYAYUUWQUPLUUXYCQNCWUMHIVYVMBLUBYLLIIUHBMCCMNOVHMIUZQYONHLZYBYHIYYCFMLSZBZXYYYBZXXGWNOXOYCCBIHJCSNYYUBCHZZWZXYYILGNIBHCYUYYCMUCIYMIBNBJUFYYBICBXZYHFMOIS
+
+6	ADSSFFNSJKWLGWAXWJNWAGLQNMFAFWWZETBXTFKQSFWGSTDUOWFLSFFJGAWASFLVJMAJJGWSDSSNFSWVWWKJEHESMJWKNLMMOAAAWJABZLFJDVXSGKGZDGAHJNWZJVOGGSSAAVAKLDGUQKGSXAXHFSXAGGSZKGLIGKADLAKFWVAKQKUGGZXWJKVFSGLZGFSDATLVHFESOXSOASLWKJWXZWSGDADWFFV
+
+
+KEY is 
+
+BRUTUS
+
+Final Deciphered message:
+
+BEPATIENTTILLTHELASTROMANSCOUNTRYMENANDLOVERSHEARMEFORMYCAUSEANDBESILENTTHATYOUMAYHEARBELIEVEMEFORMINEHONOURANDHAVERESPECTTOMINEHONOURTHATYOUMAYBELIEVECENSUREMEINYOURWISDOMANDAWAKEYOURSENSESTHATYOUMAYTHEBETTERJUDGEIFTHEREBEANYINTHISASSEMBLYANYDEARFRIENDOFCAESARSTOHIMISAYTHATBRUTUSLOVETOCAESARWASNOLESSTHANHISIFTHENTHATFRIENDDEMANDWHYBRUTUSROSEAGAINSTCAESARTHISISMYANSWERNOTTHATILOVEDCAESARLESSBUTTHATILOVEDROMEMOREHADYOURATHERCAESARWERELIVINGANDDIEALLSLAVESTHANTHATCAESARWEREDEADTOLIVEALLFREEMENASCAESARLOVEDMEIWEEPFORHIMASHEWASFORTUNATEIREJOICEATITASHEWASVALIANTIHONOURHIMBUTASHEWASAMBITIOUSISLEWHIMTHEREISTEARSFORHISLOVEJOYFORHISFORTUNEHONOURFORHISVALOURANDDEATHFORHISAMBITIONWHOISHERESOBASETHATWOULDBEABONDMANIFANYSPEAKFORHIMHAVEIOFFENDEDWHOISHERESORUDETHATWOULDNOTBEAROMANIFANYSPEAKFORHIMHAVEIOFFENDEDWHOISHERESOVILETHATWILLNOTLOVEHISCOUNTRYIFANYSPEAKFORHIMHAVEIOFFENDEDIPAUSEFORAREPLYTHENNONEHAVEIOFFENDEDIHAVEDONENOMORETOCAESARTHANYOUSHALLDOTOBRUTUSTHEQUESTIONOFHISDEATHISENROLLEDINTHECAPITOLHISGLORYNOTEXTENUATEDWHEREINHEWASWORTHYNORHISOFFENCESENFORCEDFORWHICHHESUFFEREDDEATHHERECOMESHISBODYMOURNEDBYMARKANTONYWHOTHOUGHHEHADNOHANDINHISDEATHSHALLRECEIVETHEBENEFITOFHISDYINGAPLACEINTHECOMMONWEALTHASWHICHOFYOUSHALLNOTWITHTHISIDEPARTTHATASISLEWMYBESTLOVERFORTHEGOODOFROMEIHAVETHESAMEDAGGERFORMYSELFWHENITSHALLPLEASEMYCOUNTRYTONEEDMYDEATH

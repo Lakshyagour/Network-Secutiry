@@ -1,0 +1,37 @@
+Decrypting HTTPS Traffic Using Wireshark:
+
+    Open Wireshark:
+        Open the Wireshark application.
+
+    Load the Captured Trace:
+        Open the provided Wireshark trace file capturing HTTPS traffic.
+
+    Inspect the Encrypted Traffic:
+        Review the captured traffic and identify the encrypted HTTPS packets.
+
+    Obtaining Pre-Master Key:
+        Locate and use the pre-master key logs provided (premaster.txt, or similar files).
+
+    Decrypting Traffic:
+        In Wireshark, go to Edit -> Preferences -> Protocols -> TLS.
+        Check the box for Enable pre-master secret log.
+        Browse and select the file containing the pre-master keys.
+        Wireshark should attempt to decrypt the SSL/TLS traffic using the provided keys.
+
+    Analyze Decrypted Traffic:
+        After decryption, review the captured packets again.
+        Look for exchanged information (username/password) in decrypted packets.
+
+    Extract Obtained Credentials:
+        Identify the obtained username/password from the decrypted traffic.
+
+    Access Secure Website:
+        Visit the secure website (https://localhost:4443/) using a web browser.
+
+    Log In with Obtained Credentials:
+        Use the obtained username/password to log in to the secure website.
+
+    Retrieve the Flag:
+
+    After successfully logging in, navigate to the appropriate location to find the flag.
+

